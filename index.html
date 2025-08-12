@@ -1,1313 +1,550 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zion Rehabilitation Center</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
-/* Video Gallery */
-#videos{
-  background-color:#111;
-  padding:30px 20px;
-  max-width:1000px;
-  margin:20px auto 0 auto;
-  border-radius:8px;
-  color:#fff;
-  box-shadow:0 2px 5px rgba(0,0,0,.5);
-}
-#videos h2{
-  text-align:center;
-  margin-bottom:20px;
-  color:#eee;
-  font-weight:700;
-  letter-spacing:1px;
-}
-.video-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:16px;
-}
-.video{
-  aspect-ratio:16/9;
-  overflow:hidden;
-  border-radius:10px;
-  background:#000;
-  box-shadow:0 2px 5px rgba(0,0,0,.4);
-}
-.video iframe,
-.video video{
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
+    /* ===============================
+       Base + Design Tokens
+       =============================== */
+    :root{
+      --bg: #000;
+      --panel: #111;
+      --muted: #999;
+      --text: #f0f4f8;
+      --brand: #c2ff00; /* neon green */
+      --brand-dk: #b7f200;
+      --accent: #27ae60; /* green for sections */
+      --shadow: 0 6px 15px rgba(0,0,0,.4);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --maxw: 1000px;
+    }
 
-.background-section .about-description{
-  max-width: 1000px;
-  margin: 20px auto 0;
-  padding: 18px 16px;
-  background: rgba(0,0,0,0.45);
-  border-radius: 8px;
-}
-.background-section .about-description h3{
-  margin: 0 0 8px;
-  font-size: 22px;
-  color: #c2ff00;
-}
-.background-section .about-description p{
-  margin: 0;
-  line-height: 1.7;
-  color: #f0f4f8;
-  font-size: 16px;
-}
-
-  {
-html { scroll-behavior: smooth; }
-#services { scroll-margin-top: 80px; } /* helps if you later make the header fixed */
-
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #f0f4f8;
-      margin: 0;
+      background:var(--bg);
+      color:var(--text);
     }
-    .facility-section {
-      background-color: #111;
-      padding: 60px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      max-width: 1300px;
-      margin: 40px auto;
-    }
-    .facility-box {
-      width: 280px;
-      color: #ccc;
-      text-align: left;
-    }
-    .facility-box i {
-      font-size: 36px;
-      color: #c2ff00;
-      margin-bottom: 15px;
-    }
-    .facility-box h3 {
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .facility-box p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    @media (max-width: 768px) {
-      .facility-box {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  {
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #f0f4f8;
-      margin: 0;
-    }
+    img{max-width:100%;display:block}
+    a{color:inherit}
 
-    /* OUR FACILITY SECTION */
-    .facility-intro {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 40px;
-      background-color: #black;
-      padding: 60px 20px;
-      max-width: 1300px;
-      margin: 40px auto 0;
-    }
-    .facility-text {
-      flex: 1 1 500px;
-      color: #ccc;
-    }
-    .facility-text h2 {
-      color: white;
-      font-size: 36px;
-      margin-bottom: 20px;
-      font-weight: 900;
-    }
-    .facility-text p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 10px;
-      color: #999;
-    }
-    .facility-text h3 {
-      color: #c2ff00;
-      margin-top: 25px;
-      margin-bottom: 10px;
-    }
-    .facility-text ul {
-      list-style: disc;
-      padding-left: 20px;
-    }
-    .facility-text ul li {
-      margin-bottom: 8px;
-      color: #f0f4f8;
-    }
-    .facility-text ul li::marker {
-      color: #c2ff00;
-    }
-    .facility-image {
-      flex: 1 1 400px;
-      max-width: 500px;
-    }
-    .facility-image img {
-      width: 60%;
-      border-radius: 8px;
-    }
-
-    /* FEATURES GRID */
-    .facility-section {
-      background-color: #111;
-      padding: 60px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 40px;
-      max-width: 1300px;
-      margin: 0 auto 40px;
-    }
-    .facility-box {
-      width: 280px;
-      color: #ccc;
-      text-align: left;
-    }
-    .facility-box i {
-      font-size: 36px;
-      color: #c2ff00;
-      margin-bottom: 15px;
-    }
-    .facility-box h3 {
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .facility-box p {
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .facility-box {
-        width: 100%;
-        text-align: center;
-      }
-      .facility-intro {
-        flex-direction: column;
-      }
-      .facility-text, .facility-image {
-        flex: 1 1 100%;
-        text-align: center;
-      }
-      .facility-text ul {
-        text-align: left;
-        display: inline-block;
-      }
-    }
-  
-  /* Social icons + phone block (top-right) */
-.social-header-icons{
-  position: absolute;
-  top: 80px;
-  right: 10px;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;   /* stack phone under icons */
-  align-items: flex-end;
-  gap: 6px;
-}
-
-/* icons row */
-.social-header-icons .icons a{
-  color: #c2ff00;
-  font-size: 22px;
-  margin-left: 15px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-.social-header-icons .icons a:hover{ color:#fff; }
-
-/* phone line */
-.social-header-icons .phone{
-  font-size: 20px;
-  line-height: 1;
-}
-.social-header-icons .phone .label{
-  color:#cbd5e1;            /* gray “Phone:” */
-  font-weight:700;
-  margin-right:6px;
-}
-.social-header-icons .phone .number{
-  color:#fff;               /* white number */
-  font-weight:800;
-  letter-spacing:.5px;
-  text-decoration:none;
-}
-.social-header-icons .phone .number:hover{ color:#c2ff00; }
-
-@media (max-width:768px){
-  .social-header-icons{ right:5px; top:54px; }
-  .social-header-icons .phone{ font-size:1px; }
-}
-
-  
-	.hero {
-  position: relative;
-  width: 100%;
-  max-width: 1500px;
-  height: 700px;
-  margin: 20px auto 40px;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-}
-
-.hero-slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  top: 0;
-  left: 0;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  z-index: 2;
-}
-
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #000;
-      color: #f0f4f8;
+    /* ===============================
+       Header
+       =============================== */
+    .site-header{
       position: relative;
+      background:#000;
+      padding: 18px 16px 10px;
+      text-align:center;
+    }
+    .site-header .logo{
+      position:absolute;left:16px;top:12px;width:120px;height:auto;z-index:2;
+    }
+    .site-header h1{
+      font-family:'Libertinus Sans',sans-serif;
+      font-size: clamp(30px, 5.5vw, 64px);
+      margin:0;
+      letter-spacing:.5px;
     }
 
-    .logo {
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      z-index: 2;
-      width: 130px;
+    /* Social icons + phone (top-right) */
+    .social-header{
+      position:absolute;right:12px;top:16px;z-index:3;display:flex;flex-direction:column;align-items:flex-end;gap:6px
     }
+    .social-header .icons a{color:var(--brand);font-size:20px;margin-left:12px;text-decoration:none;transition:.25s}
+    .social-header .icons a:hover{color:#fff}
+    .social-header .phone{font-size:14px;line-height:1}
+    .social-header .phone .label{color:#cbd5e1;font-weight:700;margin-right:6px}
+    .social-header .phone .number{color:#fff;font-weight:800;letter-spacing:.4px;text-decoration:none}
+    .social-header .phone .number:hover{color:var(--brand)}
 
-    header {
-      background-color: #000;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
-      margin-top: 20px;
-	  header {
-  position: relative;
-}
+    /* Nav */
+    .site-nav{display:flex;justify-content:center;gap:18px;margin-top:10px;flex-wrap:wrap}
+    .site-nav a{color:#fff;text-decoration:none;padding:8px 10px;border-radius:6px;transition:.2s}
+    .site-nav a:hover{color:#000;background:var(--brand)}
 
+    /* ===============================
+       Hero (4-column image strip that fades in)
+       =============================== */
+    .hero{display:flex;height: clamp(200px, 45vw, 420px);overflow:hidden;border-radius:10px;box-shadow:var(--shadow);max-width:1500px;margin:18px auto}
+    .hero img{width:25%;height:100%;object-fit:cover;opacity:0;animation:slideFadeIn 1s forwards}
+    .hero img:nth-child(1){animation-delay:0s}
+    .hero img:nth-child(2){animation-delay:.25s}
+    .hero img:nth-child(3){animation-delay:.5s}
+    .hero img:nth-child(4){animation-delay:.75s}
+    @keyframes slideFadeIn{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+
+    /* ===============================
+       Background / About band with overlay
+       =============================== */
+    .background-section{
+      position:relative;
+      background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("your-image-url.jpg");
+      background-position:center; background-size:cover; background-repeat:no-repeat;
+      padding: 40px 12px; border-radius:var(--radius);
+      text-align:center; max-width:var(--maxw); margin:20px auto 0;
     }
+    .about-description{max-width:var(--maxw);margin:20px auto 0;padding:18px 16px;background:rgba(0,0,0,.45);border-radius:var(--radius-sm);text-align:left}
+    .about-description h3{margin:0 0 8px;font-size:22px;color:var(--brand)}
+    .about-description p{margin:0;line-height:1.7;color:var(--text);font-size:16px}
 
-    header h1 {
-      font-family: 'Libertinus Sans', sans-serif;
-      font-size: 75px;
-      margin: 0;
+    /* ===============================
+       Vision & Mission
+       =============================== */
+    .vision-mission{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;max-width:var(--maxw);margin:40px auto;padding:0 12px}
+    .vision-card{background:#1e1e1e;color:#ccc;padding:26px 22px;border-radius:var(--radius);flex:1 1 360px;box-shadow:0 8px 20px rgba(0,0,0,.6);min-width:280px}
+    .vision-card .quote{color:var(--accent);font-weight:900;font-size:48px;line-height:.6;margin-bottom:8px}
+    .vision-card h3{color:var(--accent);font-family:'Libertinus Sans',sans-serif;font-size:22px;margin:0 0 8px;letter-spacing:.5px}
+    .vision-card p{margin:0;color:#aaa;line-height:1.55}
+
+    /* ===============================
+       Services Cards
+       =============================== */
+    #services{background:#000;padding:36px 12px;max-width:var(--maxw);margin:0 auto;border-radius:var(--radius)}
+    #services h2{text-align:center;margin:0 0 20px;font-family:'Libertinus Sans',sans-serif;font-size:30px}
+    .service-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#111;color:#fff;border-radius:10px;box-shadow:0 4px 12px rgba(255,255,255,.08);transition:.25s;display:flex;flex-direction:column;overflow:hidden}
+    .card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(255,255,255,.22)}
+    .card img{height:200px;object-fit:cover}
+    .card .meta{font-size:13px;color:#ccc;margin:12px 16px 0}
+    .card h3{color:var(--brand);margin:8px 16px 8px}
+    .card p{margin:0 16px 12px;font-size:15px}
+    .extra-description{display:none;font-size:14px;margin:0 16px 14px;color:#ddd}
+    .read-more{display:block;margin:0 16px 16px;font-weight:700;color:#fff;cursor:pointer}
+    .read-more:hover{color:#f39c12}
+
+    @media (max-width: 960px){.service-cards{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.service-cards{grid-template-columns:1fr}}
+
+    /* ===============================
+       Facility Features on Image Background
+       =============================== */
+    .facility-section{
+      position:relative; background-image:linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url("image 22.jpg");
+      background-size:cover; background-position:center; background-repeat:no-repeat;
+      padding: 48px 16px; color:#fff; border-radius:var(--radius); max-width:1300px; margin:20px auto;
+      display:flex;flex-wrap:wrap;gap:24px;justify-content:center
     }
+    .facility-box{width:280px;color:#ddd;text-align:left;background:rgba(0,0,0,.35);padding:16px;border-radius:10px}
+    .facility-box i{font-size:34px;color:var(--brand);margin-bottom:12px}
+    .facility-box h3{color:#fff;font-weight:700;font-size:18px;margin:0 0 8px}
+    .facility-box p{font-size:14px;line-height:1.6;margin:0}
+    @media (max-width:768px){.facility-box{width:100%;text-align:center}}
 
-    nav {
-      margin-top: 10px;
+    /* ===============================
+       Co‑Founder Section (image + text)
+       =============================== */
+    .facility-intro{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:28px;background:#0e0e0e;padding:38px 16px;border-radius:var(--radius);max-width:1300px;margin:24px auto}
+    .facility-text{flex:1 1 460px;color:#ccc}
+    .facility-text h2{color:#fff;font-size:clamp(22px,3.5vw,36px);margin:0 0 14px;font-weight:900}
+    .facility-text h3{color:var(--brand);margin:18px 0 8px}
+    .facility-text ul{list-style:disc;padding-left:20px;margin:0}
+    .facility-text li{margin-bottom:8px}
+    .facility-text li::marker{color:var(--brand)}
+    .facility-image{flex:1 1 300px;max-width:300px}
+    .facility-image img{width:100%;border-radius:10px}
+
+    /* ===============================
+       Gallery Carousel (scrollable row)
+       =============================== */
+    #gallery{background:#111;padding:24px 16px;max-width:var(--maxw);margin:24px auto;border-radius:var(--radius);box-shadow:0 2px 5px rgba(0,0,0,.5);position:relative}
+    #gallery h2{text-align:center;margin:0 0 14px;color:#eee;font-weight:700;letter-spacing:1px}
+    .carousel-container{position:relative;overflow:hidden}
+    .carousel-track{display:flex;gap:12px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:8px}
+    .carousel-track::-webkit-scrollbar{display:none}
+    .carousel-track img{width:23%;min-width:220px;border-radius:10px;cursor:pointer;user-select:none;transition:.25s;object-fit:cover;height:180px}
+    .carousel-track img:hover{transform:scale(1.04)}
+    .carousel-arrow{position:absolute;top:50%;transform:translateY(-50%);background:var(--brand);border:none;border-radius:50%;width:40px;height:40px;font-size:22px;color:#000;cursor:pointer;opacity:.9;user-select:none;z-index:2;transition:.2s}
+    .carousel-arrow:hover{opacity:1}
+    .carousel-arrow.left{left:6px}
+    .carousel-arrow.right{right:6px}
+
+    /* ===============================
+       Video Gallery
+       =============================== */
+    #videos{background:#111;padding:26px 16px;max-width:var(--maxw);margin:24px auto;border-radius:var(--radius);color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.5)}
+    #videos h2{text-align:center;margin:0 0 16px;color:#eee;font-weight:700;letter-spacing:1px}
+    .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .video{aspect-ratio:16/9;overflow:hidden;border-radius:10px;background:#000;box-shadow:0 2px 5px rgba(0,0,0,.4)}
+    .video iframe,.video video{width:100%;height:100%;border:0;display:block}
+    @media (max-width: 960px){.video-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.video-grid{grid-template-columns:1fr}}
+
+    /* ===============================
+       Donation Card (with background image tint)
+       =============================== */
+    .donation{background-color:var(--accent);background-image:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)), url("image 21.avif");background-size:cover;background-position:center;background-repeat:no-repeat;background-blend-mode:multiply;color:#fff;border-radius:var(--radius);padding:34px 16px;text-align:center;max-width:600px;margin:28px auto 0}
+    .donation h2{margin:0 0 8px}
+    .donation p{margin:0 0 14px}
+    .donation button{background:var(--brand);color:#000;border:none;border-radius:10px;font-weight:700;padding:14px 28px;box-shadow:0 8px 20px rgba(194,255,0,.25);transition:.15s}
+    .donation button:hover{background:var(--brand-dk);transform:translateY(-2px);box-shadow:0 12px 28px rgba(194,255,0,.35)}
+    .donation button:active{transform:translateY(0);box-shadow:0 6px 14px rgba(194,255,0,.25)}
+
+    /* ===============================
+       Footer
+       =============================== */
+    .custom-footer{background:#0e0e0e;color:#ccc;padding:44px 16px 18px}
+    .footer-container{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;max-width:1300px;margin:0 auto}
+    .footer-column{flex:1 1 200px;min-width:200px}
+    .logo-column h2{font-size:24px;line-height:1.1;color:#fff;margin:0}
+    .logo-column .highlight{color:var(--brand);font-weight:700}
+    .logo-column p{font-size:14px;color:#aaa;margin:12px 0}
+    .footer-column h4{color:#fff;font-weight:700;margin:0 0 10px}
+    .footer-column ul{list-style:none;margin:0;padding:0}
+    .footer-column li{margin-bottom:8px}
+    .footer-column a{color:#aaa;text-decoration:none;font-size:14px}
+    .footer-column a:hover{color:var(--brand)}
+    .social-icons a{display:inline-block;margin-right:10px;font-size:20px;color:var(--brand);text-decoration:none}
+    .social-icons a:hover{color:#fff}
+    .subscribe-column input[type=email]{width:100%;padding:10px;border:none;margin-bottom:10px;background:#111;color:#fff;border-radius:6px}
+    .subscribe-column button{background:var(--brand);color:#000;padding:10px 20px;border:none;font-weight:700;cursor:pointer;width:100%;border-radius:6px}
+    .footer-bottom{text-align:center;border-top:1px solid #222;margin-top:26px;padding-top:14px;font-size:13px;color:#777}
+
+    /* ===============================
+       Modals
+       =============================== */
+    .modal{display:none;position:fixed;z-index:50;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.55);padding:20px}
+    .modal-content{background:#111;color:#fff;max-width:640px;margin:60px auto;padding:22px;border-radius:12px;box-shadow:var(--shadow)}
+    .close{float:right;font-size:28px;font-weight:700;cursor:pointer;color:#aaa}
+    .close:hover{color:#fff}
+
+    /* ===============================
+       Small-Screen Tweaks
+       =============================== */
+    @media (max-width:768px){
+      .social-header{right:8px;top:10px}
+      .social-header .icons a{font-size:18px;margin-left:10px}
+      .social-header .phone{font-size:12px}
+      .site-nav{gap:10px}
+      .carousel-track img{width:80%;height:auto}
     }
-
-    nav a {
-      margin: 0 15px;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    nav a:hover {
-      color: #f39c12;
-    }
-
-    .hero {
-      display: flex;
-      height: 400px;
-      overflow: hidden;
-    }
-
-    .hero img {
-      width: 25%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: slideFadeIn 1s forwards;
-    }
-
-    .hero img:nth-child(1) { animation-delay: 0s; }
-    .hero img:nth-child(2) { animation-delay: 0.3s; }
-    .hero img:nth-child(3) { animation-delay: 0.6s; }
-    .hero img:nth-child(4) { animation-delay: 0.9s; }
-
-    @keyframes slideFadeIn {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-}
-.background-section{
-  /* two layers: 1) dark overlay, 2) logo */
-  background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-                    url("your-image-url.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  /* gradient fills area, logo is smaller */
-  background-size: cover, 420px auto;   /* tweak 420px to your taste */
-  padding: px 5px;
-  color: #f0f4f8;
-  text-align: center;
-  border-radius: 8px;
-}
-
-/* smaller logo on mobile */
-@media (max-width: 768px){
-  .background-section{
-    background-size: cover, 220px auto;
-  }
-}
-
-
-
-    footer {
-	
-      background-color: #000;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-	  
-	  .custom-footer {
-  background-color: #0e0e0e;
-  color: #ccc;
-  font-family: 'Arial', sans-serif;
-  padding: 50px 20px 20px;
-}
-
-.footer-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1300px;
-  margin: 0 auto;
-  gap: 30px;
-}
-
-.footer-column {
-  flex: 1 1 180px;
-  min-width: 200px;
-}
-
-.logo-column h2 {
-  font-size: 24px;
-  line-height: 1.2;
-  color: #fff;
-}
-
-.logo-column .highlight {
-  color: #c2ff00;
-  font-weight: bold;
-}
-
-.logo-column p {
-  font-size: 14px;
-  color: #aaa;
-  margin: 15px 0;
-}
-
-.footer-column h4 {
-  color: white;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-.footer-column ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-column ul li {
-  margin-bottom: 10px;
-}
-
-.footer-column ul li a {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.footer-column ul li a:hover {
-  color: #c2ff00;
-}
-
-.social-icons a {
-  display: inline-block;
-  margin-right: 10px;
-  font-size: 20px; /* adjust size */
-  color: #c2ff00;
-  text-decoration: none;
-}
-
-.social-icons a:hover {
-  color: #ffffff;
-}
-
-}
-
-.subscribe-column form {
-  margin-top: 10px;
-}
-
-.subscribe-column input[type="email"] {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  margin-bottom: 10px;
-  background-color: #111;
-  color: #fff;
-  border-radius: 4px;
-}
-
-.subscribe-column button {
-  background-color: #c2ff00;
-  color: #000;
-  padding: 10px 20px;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 4px;
-}
-
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid #222;
-  margin-top: 40px;
-  padding-top: 20px;
-  font-size: 13px;
-  color: #777;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-  }
-
-  .footer-column {
-    margin-bottom: 30px;
-  }
-
-  .subscribe-column button {
-    width: 100%;
-  }
-}
-
-    }
-
-    .donation {
-      background-color: #black;
-      padding: 40px 20px;
-      text-align: center;
-      color: #fff;
-      border-radius: 8px;
-      margin-top: 40px;
-      max-width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-/* Donate button — brand match + better contrast on dark bg */
-.donation button{
-  background-color: #c2ff00;   /* neon brand green */
-  color: #000;                 /* readable on bright green */
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
-  padding: 14px 28px;
-  box-shadow: 0 8px 20px rgba(194,255,0,.25);
-  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
-}
-.donation button:hover{
-  background-color: #b7f200;   /* slight darken on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(194,255,0,.35);
-}
-.donation button:active{
-  transform: translateY(0);
-  box-shadow: 0 6px 14px rgba(194,255,0,.25);
-}
-	
-
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 1000%;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding-top: 200px;
-	  padding-right: 50px
-    }
-
-    .close {
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #aaa;
-    }
-
-    .close:hover {
-      color: black;
-    }
-
-    /* Services Section */
-    #services {
-      background-color: #000000;
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-      border-radius: 8px;
-      color: white;
-    }
-
-    #services h2 {
-	  font-size: 30px;
-	  font-family: 'Libertinus Sans', sans-serif;
-      color: #ffffff;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .service-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
-    }
-
-    .card {
-      background-color: #111;
-      color: white;
-      border-radius: 10px;
-      width: 32%;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.8);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px 10px 0 0;
-    }
-
-    .card h3 {
-      color: #c2ff00;
-      margin: 10px 20px 10px 20px;
-    }
-
-    .card p {
-      margin: 0 20px 15px 20px;
-      font-size: 15px;
-    }
-
-    .card .meta {
-      font-size: 13px;
-      color: #ccc;
-      margin: 10px 20px 0 20px;
-    }
-
-    .extra-description {
-      display: none;
-      font-size: 14px;
-      margin: 0 20px 15px 20px;
-      color: #ddd;
-    }
-
-    .read-more {
-      display: block;
-      margin: 0 20px 20px 20px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-    }
-
-    .read-more:hover {
-      color: #f39c12;
-    }
-
-    /* Gallery Carousel Section */
-    #gallery {
-      background-color: #111;
-      padding: 30px 20px;
-      max-width: 1000px;
-      margin: 40px auto 0 auto;
-      border-radius: 8px;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      position: relative;
-    }
-
-    #gallery h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #eee;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .carousel-track {
-      display: flex;
-      gap: 15px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      padding-bottom: 10px;
-    }
-
-    .carousel-track::-webkit-scrollbar {
-      display: none;
-    }
-
-    .carousel-track img {
-      width: 23%;
-      border-radius: 10px;
-      cursor: pointer;
-      user-select: none;
-      transition: transform 0.3s ease;
-      flex-shrink: 0;
-      object-fit: cover;
-      height: 180px;
-    }
-
-    .carousel-track img:hover {
-      transform: scale(1.05);
-    }
-
-    .carousel-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #c2ff00;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 25px;
-      color: black;
-      cursor: pointer;
-      opacity: 0.9;
-      user-select: none;
-      z-index: 10;
-      transition: opacity 0.3s ease;
-    }
-
-    .carousel-arrow:hover {
-      opacity: 1;
-    }
-
-    .carousel-arrow.left {
-      left: 5px;
-    }
-
-    .carousel-arrow.right {
-      right: 5px;
-    }
-
-    @media (max-width: 768px) {
-      .card {
-        width: 100%;
-      }
-
-      .hero {
-        flex-direction: column;
-        height: auto;
-      }
-
-      .hero img {
-        width: 100%;
-        height: 200px;
-      }
-
-      .carousel-track img {
-        width: 80%;
-        height: auto;
-      }
-    }
-
-   .vision-mission-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 0 20px;
-}
-
-.vision-box {
-  background-color: #1e1e1e;
-  color: #ccc;
-  padding: 30px 25px;
-  border-radius: 12px;
-  flex: 1 1 400px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.8);
-  font-family: 'Arial', sans-serif;
-  position: relative;
-  min-width: 300px;
-  max-width: 100%;
-}
-
-.vision-box .quote-mark {
-  color: #27ae60;
-  font-weight: 900;
-  font-size: 60px;
-  line-height: 0.6;
-  margin-bottom: 10px;
-}
-
-.vision-box h3 {
-  color: #27ae60;
-  font-family: 'Libertinus Sans', sans-serif;
-  font-size: 24px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.vision-box p {
-  font-size: 17px;
-  line-height: 1.5;
-  color: #aaa;
-  margin: 0;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .vision-mission-section {
-    flex-direction: column;
-  }
-
-  .vision-box {
-    width: 100%;
-  }
-}
-
-
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-  .vision-mission {
-    flex-direction: column;
-    padding: 30px 20px;
-  }
-
-  .vision-mission > div {
-    margin-bottom: 30px;
-  }
-}
-.donation {
-  background-color: #27ae60;
-  padding: 40px 20px;
-  text-align: center;
-  color: #fff;
-  border-radius: 8px;
-  margin-top: 40px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.donation button {
-  background-color: #44a6c6;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.donation button:hover {
-  background-color: #1e8fa7;
-}
-
-html { scroll-behavior: smooth; }
-#background { scroll-margin-top: 10px; } /* adjust if you use a fixed header */
-
-/* Facility section with image + dark overlay */
-.facility-section{
-  position: relative;
-  background-image:
-    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url("image 22.jpg"); /* your image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* override the old solid color */
-  background-color: transparent;
-  color: #fff;
-  border-radius: 12px;
-}
-
-/* (optional) make each box pop on the image */
-.facility-box{
-  background: rgba(0,0,0,.35);
-  padding: 18px;
-  border-radius: 10px;
-}
-
-/* Image background for the green donation card */
-.donation{
-  /* keep your brand green as a tint + add image */
-  background-color: #27ae60;
-  background-image:
-    linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.25)),
-    url("image 21.avif"); /* <- your image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-blend-mode: multiply; /* keeps the green tone while showing the image */
-  color: #fff;
-  border-radius: 12px; /* keep your rounded look */
-}
-
-
-
-
   </style>
 </head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <body>
-<script>
-  const slides = document.querySelectorAll('.hero-slide');
-  let currentIndex = 0;
+  <!-- Header -->
+  <header class="site-header">
+    <img src="your-image-url.jpg" alt="Zion Rehabilitation Center logo" class="logo" />
 
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-  }
+    <div class="social-header">
+      <div class="icons">
+        <a href="#" title="Facebook" onclick="window.open('https://www.facebook.com','_blank')"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" title="Instagram" onclick="window.open('https://www.instagram.com','_blank')"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" title="YouTube" onclick="window.open('https://www.youtube.com/@ZionRehabilitationCenter','_blank')"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="phone">
+        <span class="label">Phone:</span>
+        <a class="number" href="tel:+94767093265">+94 (76) 70 93265</a>
+      </div>
+    </div>
 
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  // Start slideshow
-  showSlide(currentIndex);
-  setInterval(nextSlide, 5000); // change every 5 seconds
-</script>
-
-
-
-  <img src="your-image-url.jpg" alt="Logo" class="logo" />
-
-  <header>
     <h1>Zion Rehabilitation Center</h1>
-<nav>
-  <a href="#background">About</a>
-  <a href="#services">Services</a>
-  <a onclick="openModal('contactModal')">Contact</a>
-  <a onclick="openModal('donateModal')">Donate</a>
-</nav>
-<section class="background-section" id="background">
-
-	
-	<div class="social-header-icons">
-  <div class="icons">
-    <a href="#" title="Facebook" onclick="window.open('https://www.facebook.com','_blank')"><i class="fab fa-facebook-f"></i></a>
-    <a href="#" title="Instagram" onclick="window.open('https://www.instagram.com','_blank')"><i class="fab fa-instagram"></i></a>
-    <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-    <a href="#" title="YouTube" onclick="window.open('https://www.youtube.com/@ZionRehabilitationCenter','_blank')"><i class="fab fa-youtube"></i></a>
-  </div>
-
-  <div class="phone">
-    <span class="label">Phone:</span>
-    <a class="number" href="tel:+94767093265">+94 (76) 70 93265</a>
-  </div>
-</div>
-
-
-	
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#background">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#videos">Videos</a>
+      <a href="#contact" onclick="openModal('contactModal')">Contact</a>
+      <a href="#donate" onclick="openModal('donateModal')">Donate</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <img src="image 10.jpg" />
-    <img src="image 11.png" />
-    <img src="image 17.png" />
-    <img src="Image 4.jpg" />
+  <!-- Hero (4 images) -->
+  <section class="hero" aria-label="Featured images">
+    <img src="Image 10.jpg" alt="Therapy session" />
+    <img src="Image 11.png" alt="Occupational therapy tools" />
+    <img src="Image 17.png" alt="Speech therapy practice" />
+    <img src="Image 4.jpg" alt="Community support" />
   </section>
 
-  <section class="background-section">
+  <!-- Background / About -->
+  <section class="background-section" id="background">
     <h2>Your Healing Journey Begins Here</h2>
     <p>Experience the best in rehabilitation care. Our team is here to guide you through every step of your recovery.</p>
 
-<div class="about-description" id="about-description">
-  <h3>About Zion Rehabilitation Center</h3>
-  <p>
-    Zion Rehabilitation Center is a community-focused center dedicated to restoring health, dignity,
-    and independence. We provide integrated services across physical, occupational, and speech therapy,
-    residential rehabilitation, family counseling, art &amp; music therapy, nutrition &amp; wellness,
-    medically supervised detox, and life-skills training. Our approach blends evidence-based practice,
-    personalized care plans, and (when desired) spiritual support. We partner closely with families and
-    guide clients from intake through aftercare to support lasting recovery and a confident return to daily life.
-  </p>
-</div>
-
+    <div class="about-description" id="about-description">
+      <h3><center>Zion</center> </h3>
+      <p>
+        Zion Rehabilitation Center is a community‑focused center dedicated to restoring health, dignity,
+        and independence. We provide integrated services across physical, occupational, and speech therapy,
+        residential rehabilitation, family counseling, art &amp; music therapy, nutrition &amp; wellness,
+        medically supervised detox, and life‑skills training. Our approach blends evidence‑based practice,
+        personalized care plans, and (when desired) spiritual support. We partner closely with families and
+        guide clients from intake through aftercare to support lasting recovery and a confident return to daily life.
+      </p>
+    </div>
   </section>
-<!-- Vision and Mission Section -->
 
-<section class="vision-mission-section" id="about">
-  <div class="vision-box mission">
-    <div class="quote-mark">“</div>
-    <h3>MISSION</h3>
-    <p>
-      To provide high-quality, holistic rehabilitation services that restore health, build resilience, and improve the quality of life for our clients.
-    </p>
-  </div>
+  <!-- Vision & Mission -->
+  <section class="vision-mission" aria-label="Vision and Mission">
+    <div class="vision-card">
+      <div class="quote">“</div>
+      <h3>MISSION</h3>
+      <p>To provide holistic services and Guiding individuals on the spiritual pathspiritual path to achieve mental, spiritual, and physical well-being, providing direction to move away from harmful behaviors, and showing the way to face tomorrow as a better person	.</p>
+    </div>
+    <div class="vision-card">
+      <div class="quote">“</div>
+      <h3>VISION</h3>
+      <p>Guiding the misguided and lost youth with the light of the right path, helping them integrate into life as good human beings in society, and paving the way to find light out of darkness.</p>
+    </div>
+  </section>
 
-  <div class="vision-box vision">
-    <div class="quote-mark">“</div>
-    <h3>VISION</h3>
-    <p>
-      To be a leading center of excellence in rehabilitation, recognized for innovation, compassion, and transformative care.
-    </p>
-  </div>
-</section>
-
-
-  <!-- Services Section -->
-  <section class="section" id="services">
+  <!-- Services -->
+  <section id="services" class="section" aria-label="Our Services">
     <h2>Our Services</h2>
     <div class="service-cards">
       <div class="card">
-        <img src="image 10.jpg" />
+        <img src="Image 10.jpg" alt="Physical therapy" />
         <p class="meta">Posted by Zion Rehab | August 01, 2025</p>
         <h3>Physical Therapy</h3>
-        <p>Our physical therapy program focuses on restoring your strength, flexibility, and movement through evidence-based treatment plans. Whether you're recovering from surgery, injury, or dealing with chronic pain, our licensed therapists provide hands-on care and customized exercises tailored to your unique needs. We help reduce pain, improve balance and posture, and prevent future injuries. With ongoing support and progress tracking, we guide you every step of the way toward full recovery and long-term wellness. Our goal is to help you regain independence and return to your daily life with improved confidence and physical ability.</p>
+        <p>Our physical therapy program focuses on restoring your strength, flexibility, and movement through evidence‑based treatment plans. Whether you're recovering from surgery, injury, or dealing with chronic pain, our licensed therapists provide hands‑on care and customized exercises tailored to your unique needs. We help reduce pain, improve balance and posture, and prevent future injuries. With ongoing support and progress tracking, we guide you every step of the way toward full recovery and long‑term wellness. Our goal is to help you regain independence and return to your daily life with improved confidence and physical ability.</p>
         <p class="extra-description">Includes personalized exercises, pain relief, and mobility support.</p>
         <span class="read-more" onclick="toggleDescription(this)">READ MORE</span>
       </div>
+
       <div class="card">
-        <img src="image 11.png" />
+        <img src="Image 11.png" alt="Occupational therapy" />
         <p class="meta">Posted by Zion Rehab | August 02, 2025</p>
         <h3>Occupational Therapy</h3>
         <p>Occupational therapy empowers individuals to regain independence in daily life tasks such as dressing, cooking, writing, and personal care. Our therapists assess your unique needs and create personalized plans to improve motor coordination, cognitive functioning, and sensory integration. Whether you're recovering from illness, injury, or managing a developmental or neurological condition, we focus on enhancing your ability to perform essential activities safely and confidently. We also provide adaptive techniques and tools to make everyday tasks easier. Our goal is to support you in living a more independent, productive, and fulfilling life—at home, at work, and in the community.</p>
         <p class="extra-description">Focused on improving fine motor skills and adaptive techniques.</p>
         <span class="read-more" onclick="toggleDescription(this)">READ MORE</span>
       </div>
+
       <div class="card">
-        <img src="image 12.jpg" />
+        <img src="Image 12.jpg" alt="Speech therapy" />
         <p class="meta">Posted by Zion Rehab | August 03, 2025</p>
         <h3>Speech Therapy</h3>
-        <p>Speech therapy focuses on enhancing communication skills and addressing speech, language, voice, and swallowing disorders. It helps individuals who have difficulty speaking clearly, understanding language, expressing themselves, or swallowing safely due to conditions like stroke, brain injury, autism, or developmental delays. Our therapists use personalized strategies including speech exercises, language development activities, and cognitive-communication techniques to improve fluency, articulation, and comprehension. We also provide training for alternative communication methods when needed. The goal is to empower each client to communicate confidently and effectively, improving their quality of life both socially and emotionally, in everyday situations.</p>
+        <p>Speech therapy focuses on enhancing communication skills and addressing speech, language, voice, and swallowing disorders. It helps individuals who have difficulty speaking clearly, understanding language, expressing themselves, or swallowing safely due to conditions like stroke, brain injury, autism, or developmental delays. Our therapists use personalized strategies including speech exercises, language development activities, and cognitive‑communication techniques to improve fluency, articulation, and comprehension. We also provide training for alternative communication methods when needed. The goal is to empower each client to communicate confidently and effectively, improving their quality of life both socially and emotionally, in everyday situations.</p>
         <p class="extra-description">Includes speech exercises, language development, and cognitive communication training.</p>
         <span class="read-more" onclick="toggleDescription(this)">READ MORE</span>
       </div>
     </div>
   </section>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zion Rehabilitation Center</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libertinus+Sans:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-</head>
-<body>
-  <section class="facility-section">
+  <!-- Facility Feature Grid (icons) -->
+  <section class="facility-section" aria-label="Facility Features">
     <div class="facility-box">
-      <i class="fas fa-chalkboard-teacher"></i>
+      <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
       <h3>Life Skills Training Room</h3>
       <p>Workshops for budgeting, communication, job prep.</p>
     </div>
     <div class="facility-box">
-      <i class="fas fa-dumbbell"></i>
-      <h3>TRAINING EQUIPMENT</h3>
-      <p>Achieve your fitness goals effectively with our range of state-of-the-art equipment.</p>
+      <i class="fas fa-dumbbell" aria-hidden="true"></i>
+      <h3>Training Equipment</h3>
+      <p>Achieve fitness goals with state‑of‑the‑art equipment.</p>
     </div>
     <div class="facility-box">
-      <i class="fas fa-users"></i>
+      <i class="fas fa-users" aria-hidden="true"></i>
       <h3>Family Counseling Center</h3>
       <p>Support spaces for families involved in recovery.</p>
     </div>
     <div class="facility-box">
-      <i class="fas fa-apple-alt"></i>
-      <h3>Nutrition & Wellness Center</h3>
+      <i class="fas fa-apple-alt" aria-hidden="true"></i>
+      <h3>Nutrition & Wellness</h3>
       <p>Dietary guidance and healthy meal planning.</p>
     </div>
     <div class="facility-box">
-      <i class="fas fa-music"></i>
-      <h3>Art & Music Therapy Rooms</h3>
+      <i class="fas fa-music" aria-hidden="true"></i>
+      <h3>Art & Music Therapy</h3>
       <p>Creative therapy for emotional expression.</p>
     </div>
     <div class="facility-box">
-      <i class="fas fa-pills"></i>
+      <i class="fas fa-pills" aria-hidden="true"></i>
       <h3>Medical Detox Unit</h3>
       <p>Clinical detox under medical supervision.</p>
     </div>
   </section>
-</body>
-</html>
-
-  <!-- Gallery Section -->
-  <section id="gallery">
+<!-- Gallery -->
+  <section id="gallery" aria-label="Photo Gallery">
     <h2>Gallery</h2>
     <div class="carousel-container">
-      <button class="carousel-arrow left" onclick="scrollCarousel(-1)">&#8249;</button>
+      <button class="carousel-arrow left" onclick="scrollCarousel(-1)" aria-label="Scroll left">&#8249;</button>
       <div class="carousel-track" id="carouselTrack">
-        <img src="Image 4.jpg" alt="Gallery Image 1" />
-        <img src="image 10.jpg" alt="Gallery Image 2" />
-        <img src="image 11.png" alt="Gallery Image 3" />
-        <img src="image 12.jpg" alt="Gallery Image 4" />
-		<img src="image 14.png" alt="Gallery Image 14" />
-		
+        <img src="Image 4.jpg" alt="Community activity" />
+        <img src="Image 10.jpg" alt="Therapy room" />
+        <img src="Image 11.png" alt="Occupational tools" />
+        <img src="Image 12.jpg" alt="Speech session" />
+        <img src="Image 14.png" alt="Center exterior" />
       </div>
-      <button class="carousel-arrow right" onclick="scrollCarousel(1)">&#8250;</button>
+      <button class="carousel-arrow right" onclick="scrollCarousel(1)" aria-label="Scroll right">&#8250;</button>
     </div>
   </section>
 
-<section id="videos">
-  <h2>Video Gallery</h2>
-  <div class="video-grid">
-    <!-- YouTube embeds (replace VIDEO_ID_X with your own IDs) -->
-    <div class="video">
-  <iframe
-    src="https://www.youtube.com/embed/gFnKOr5DTAI"
-    title="Video 1"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
-
-   <div class="video">
-  <iframe
-    src="https://www.youtube.com/embed/fRoFj389gQk"
-    title="Video 2"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowfullscreen>
-  </iframe>
-</div>
-
-
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID_3"
-              title="Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
+  <!-- Videos -->
+  <section id="videos" aria-label="Video Gallery">
+    <h2>Video Gallery</h2>
+    <div class="video-grid">
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/gFnKOr5DTAI" title="Video 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/fRoFj389gQk" title="Video 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="video">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
     </div>
+  </section>
 
-    <!-- OR: local MP4 examples (remove if not needed)
-    <div class="video"><video controls src="videos/rehab1.mp4"></video></div>
-    <div class="video"><video controls src="videos/rehab2.mp4"></video></div>
-    -->
-  </div>
-</section>
-
-<body>
-
-  <!-- OUR FACILITY SECTION -->
-  <section class="facility-intro">
+  <!-- Co‑Founder -->
+  <section class="facility-intro" aria-label="Co‑Founder">
     <div class="facility-text">
-      <h2>CO FOUNDER</h2>
-      <p>Mr. Manoj De. Silva.</p>
-      <p>Mr. Manoj De. Silva is a visionary leader and compassionate advocate for recovery and second chances. As the co-founder of Zion Rehabilitation Center, he brings years of experience in community service, counseling, and spiritual guidance. Driven by a deep commitment to helping individuals overcome addiction and restore their lives, Mr. Perera plays a central role in shaping the center's mission and programs.
-
-His leadership is rooted in empathy, faith, and hands-on involvement with every stage of the rehabilitation process—from intake and therapy to reintegration and aftercare. Known for his motivational speaking and personal mentorship, Mr. Perera continues to inspire clients and staff alike through his unwavering dedication to healing and transformation.</p>
-      <h3>Guided by Compassion: Programs Led by Mr. Manoj De. Silva:</h3>
+      <h2>CO‑FOUNDER</h2>
+      <p><strong>Mr. Manoj De Silva</strong></p>
+      <p>Mr. Manoj De Silva is a visionary leader and compassionate advocate for recovery and second chances. As the co‑founder of Zion Rehabilitation Center, he brings years of experience in community service, counseling, and spiritual guidance. Driven by a deep commitment to helping individuals overcome addiction and restore their lives, Mr. De Silva plays a central role in shaping the center's mission and programs.</p>
+      <p>His leadership is rooted in empathy, faith, and hands‑on involvement with every stage of the rehabilitation process—from intake and therapy to reintegration and aftercare. Known for his motivational speaking and personal mentorship, Mr. De Silva continues to inspire clients and staff alike through his unwavering dedication to healing and transformation.</p>
+      <h3>Guided by Compassion: Programs Led by Mr. De Silva</h3>
       <ul>
-        <li> Personalized Counseling.</li>
-        <li> Family Support Programs.</li>
-        <li>Residential Rehabilitation.</li>
-        <li>Life Skills & Recovery Education.</li>
-        <li>Motivational Talks by Mr. Perera.</li>
-        <li>Aftercare & Follow-Up Support.</li>
+        <li>Personalized Counseling</li>
+        <li>Family Support Programs</li>
+        <li>Residential Rehabilitation</li>
+        <li>Life Skills & Recovery Education</li>
+        <li>Motivational Talks</li>
+        <li>Aftercare & Follow‑Up Support</li>
       </ul>
     </div>
     <div class="facility-image">
-      <img src="image 14.png" alt="Our Facility Image">
+      <img src="image 14.png" alt="Co‑founder portrait" />
     </div>
   </section>
 
-</body>
-</html>
-<!-- Donation Section -->
-<section class="donation">
-  <h2>Support Our Mission</h2>
-  <p>Your contribution helps us transform lives through holistic rehabilitation care. Every donation, big or small, makes a difference.</p>
-  <button onclick="openModal('donateModal')">DONATE NOW</button>
-</section>
+  
 
-<footer class="custom-footer">
+  <!-- Donate -->
+  <section id="donate" class="donation" aria-label="Donate">
+    <h2>Support Our Mission</h2>
+    <p>Your contribution helps us transform lives through holistic rehabilitation care. Every donation, big or small, makes a difference.</p>
+    <button onclick="openModal('donateModal')">DONATE NOW</button>
+  </section>
 
-
+  <!-- Footer -->
   <footer class="custom-footer">
-  <div class="footer-container">
-    <div class="footer-column logo-column">
-      <h2><span class="highlight">ZION</span><br />Rehabilitation Center</h2>
-      <p>We provide holistic rehab services with compassion, innovation, and dedication to your recovery journey.</p>
-      <div class="social-icons">
-  <a href="#" title="Facebook" onclick="window.open('https://www.facebook.com', '_blank')"><i class="fab fa-facebook-f"></i></a>
-  <a href="#" title="Facebook" onclick="window.open('https://www.Instagram.com', '_blank')"><i class="fab fa-instagram"></i></a>
-  <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
-  <a href="#" title="Youtube" onclick="window.open('https://www.youtube.com/@ZionRehabilitationCenter', '_blank')"><i class="fab fa-youtube"></i></a>
+    <div class="footer-container">
+      <div class="footer-column logo-column">
+        <h2><span class="highlight">ZION</span><br/>Rehabilitation Center</h2>
+        <p>We provide holistic rehab services with compassion, innovation, and dedication to your recovery journey.</p>
+        <div class="social-icons">
+          <a href="#" title="Facebook" onclick="window.open('https://www.facebook.com', '_blank')"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Instagram" onclick="window.open('https://www.instagram.com', '_blank')"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <a href="#" title="YouTube" onclick="window.open('https://www.youtube.com/@ZionRehabilitationCenter', '_blank')"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
 
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#background">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#videos">Videos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Policies</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Get Involved</h4>
+        <ul>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Workshops</a></li>
+          <li><a href="#">Outreach</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column subscribe-column">
+        <h4>Subscribe for Updates</h4>
+        <p>Join our newsletter to receive the latest news and events.</p>
+        <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thanks for subscribing!')">
+          <input type="email" placeholder="Email*" required />
+          <button type="submit">SUBSCRIBE</button>
+        </form>
       </div>
     </div>
-    <div class="footer-column">
-      <h4>Navigation</h4>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a onclick="openModal('contactModal')">Contact</a></li>
-        <li><a onclick="openModal('donateModal')">Donate</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h4>Information</h4>
-      <ul>
-        <li><a href="#">Team</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Policies</a></li>
-        <li><a href="#">Blog</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h4>Get Involved</h4>
-      <ul>
-        <li><a href="#faq">FAQs</a></li>
-        <li><a href="#">Volunteer</a></li>
-        <li><a href="#">Workshops</a></li>
-        <li><a href="#">Outreach</a></li>
-      </ul>
-    </div>
-    <div class="footer-column subscribe-column">
-      <h4>Subscribe for Updates</h4>
-      <p>Join our newsletter to receive the latest news and events.</p>
-      <form class="subscribe-form">
-        <input type="email" placeholder="Email*" required />
-        <button type="submit">SUBSCRIBE</button>
-      </form>
-    </div>
-  </div>
 
-  <div class="footer-bottom">
-    <p>© 2025 Zion Rehabilitation Center. All Rights Reserved.</p>
-  </div>
-</footer>
-
+    <div class="footer-bottom">
+      <p>© 2025 Zion Rehabilitation Center. All Rights Reserved.</p>
+    </div>
+  </footer>
 
   <!-- Modals -->
-  <div id="aboutModal" class="modal">
+  <div id="aboutModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutTitle">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('aboutModal')">&times;</span>
-      <h2>About Us</h2>
+      <span class="close" onclick="closeModal('aboutModal')" aria-label="Close">&times;</span>
+      <h2 id="aboutTitle">About Us</h2>
       <p>Welcome to Zion Rehabilitation Center — your partner in health and healing.</p>
     </div>
   </div>
 
-  <div id="servicesModal" class="modal">
+  <div id="servicesModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="servicesTitle">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('servicesModal')">&times;</span>
-      <h2>Our Services</h2>
+      <span class="close" onclick="closeModal('servicesModal')" aria-label="Close">&times;</span>
+      <h2 id="servicesTitle">Our Services</h2>
       <p>Explore the wide range of therapies and programs we offer.</p>
     </div>
   </div>
 
-  <div id="contactModal" class="modal">
+  <div id="contactModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
     <div class="modal-content">
-      <span class="close" onclick="closeModal('contactModal')">&times;</span>
-      <h2>Contact Us</h2>
+      <span class="close" onclick="closeModal('contactModal')" aria-label="Close">&times;</span>
+      <h2 id="contactTitle">Contact Us</h2>
       <p>Get in touch to learn more or schedule an appointment.</p>
     </div>
   </div>
 
- 
- <div id="donateModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('donateModal')">&times;</span>
-    <img src="image 20.png" style="width: 800px; max-width: 450px; display: block; margin: 0 auto; border-radius: 1000px;" />
+  <div id="donateModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="donateTitle">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('donateModal')" aria-label="Close">&times;</span>
+      <img src="Image 20.png" alt="Donation QR or Details" style="width:100%;max-width:420px;display:block;margin:0 auto;border-radius:12px" />
+    </div>
   </div>
-</div>
 
-  
-
+  <!-- Scripts -->
   <script>
-    // Modal functions
-    function openModal(id) {
-      document.getElementById(id).style.display = "block";
-    }
-    function closeModal(id) {
-      document.getElementById(id).style.display = "none";
-    }
-    window.onclick = function(event) {
-      ['aboutModal','servicesModal','contactModal','donateModal'].forEach(function(id) {
-        const modal = document.getElementById(id);
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      });
-    };
-
-    // Read more toggle
-    function toggleDescription(el) {
+    // Simple toggle for "Read More"
+    function toggleDescription(el){
       const desc = el.previousElementSibling;
-      if (desc.style.display === "block") {
-        desc.style.display = "none";
-        el.textContent = "READ MORE";
-      } else {
-        desc.style.display = "block";
-        el.textContent = "READ LESS";
-      }
+      const isOpen = desc.style.display === 'block';
+      desc.style.display = isOpen ? 'none' : 'block';
+      el.textContent = isOpen ? 'READ MORE' : 'READ LESS';
     }
 
     // Carousel scroll
-    function scrollCarousel(direction) {
+    function scrollCarousel(direction){
       const track = document.getElementById('carouselTrack');
-      const scrollAmount = track.clientWidth * 0.8;
-      track.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+      const amount = track.clientWidth * 0.8;
+      track.scrollBy({ left: direction * amount, behavior: 'smooth' });
     }
+
+    // Modals
+    function openModal(id){ document.getElementById(id).style.display='block'; }
+    function closeModal(id){ document.getElementById(id).style.display='none'; }
+    window.addEventListener('click', (e)=>{
+      ['aboutModal','servicesModal','contactModal','donateModal'].forEach(id=>{
+        const m = document.getElementById(id);
+        if(e.target === m){ m.style.display='none'; }
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
-
-
